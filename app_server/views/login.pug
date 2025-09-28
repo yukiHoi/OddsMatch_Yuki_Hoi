@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .main-login.main-center
+    h5 Please log in to continue
+    if error
+      .alert.alert-danger(role="alert") #{error}
+    if success
+      .alert.alert-success(role="alert") #{success}
+
+    form(method="post", action="/login")
+      .form-group
+        label.cols-sm-2.control-label(for="email") Email
+        .cols-sm-10
+          .input-group
+            span.input-group-addon
+              i.fa.fa-envelope(aria-hidden="true")
+            input#email.form-control(type="email", name="email", placeholder="Enter your Email", required)
+
+      .form-group
+        label.cols-sm-2.control-label(for="password") Password
+        .cols-sm-10
+          .input-group
+            span.input-group-addon
+              i.fa.fa-lock.fa-lg(aria-hidden="true")
+            input#password.form-control(type="password", name="password", placeholder="Enter your Password", required)
+
+      .form-group
+        button#button.btn.btn-primary.btn-lg.btn-block.login-button(type="submit") Log in
+
+    p.mt-3.text-center
+      | Don’t have an account? 
+      a(href="/register") Register

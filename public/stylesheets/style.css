@@ -1,80 +1,227 @@
-@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
-
-body {
-  font-family: "Cabin", Arial, sans-serif;
-  color: #ffffff;
-  background-color: #108a93;
+/* Top bar (no Bootstrap utilities needed) */
+.topbar {
+    background: #1E90FF;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+.topbar-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.navbar {
-  background-color: #ad1d28;
-  border-color: #911821;
+.topbar .brand, .topbar .register-link {
+    color: #fff;
+    text-decoration: none;
+    font-size:45px;
 }
 
-.navbar-brand {
-  font-family: 'Lobster', cursive;
+.topbar .brand {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.banner {
-  margin-top: 4em;
-  border-bottom: 1px solid #469ea8;
-  margin-bottom: 1.5em;
-  padding-bottom: 0.5em;
+.logo-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 66px;
+    border-radius: 50%;
+    background: #fff;
+    color: #1E90FF;
+    font-weight: 800;
+    line-height: 1;
 }
 
-h1 small {
-  color: #aaa;
+/* Auth card */
+.auth-card {
+    max-width: 460px;
+    margin: 4rem auto 0;
+    background: #fff;
+    padding: 2.25rem 2rem 1.75rem;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+    text-align: center;
 }
 
-.card {
-  background-color: #469ea8;
+.login-title {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+    color: #222;
 }
 
-.card-primary {
-  border-color: #a2ced3;
-  margin-bottom: 1rem;
+.form-control {
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
 }
 
-.review-header {
-  background-color: #31727a;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.5em;
+    .form-control:focus {
+        border-color: #0b6ef8;
+        box-shadow: 0 0 0 3px rgba(11,110,248,.15);
+    }
+
+.btn-login {
+    background: #19a463;
+    border: none;
+    height: 48px;
+    border-radius: 8px;
+    font-weight: 700;
+    color: #fff;
+}
+/* Spacing */
+.form-group {
+    margin-bottom: 15px;
 }
 
-.review {
-  margin-right: -20px;
-  margin-left: -20px;
-  margin-bottom: 1em;
+label {
+    margin-bottom: 8px;
 }
 
-.badge-default, .btn-primary {
-  background-color: #ad1d28;
-  border-color: #911821;
+/* Inputs + placeholders */
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
 }
 
-h4 a, h4 a:hover {
-  color: #fff;
+/* Card shell */
+.main-login {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.3);
 }
 
-h4 small {
-  font-size: 60%;
-  line-height: 200%;
-  color: #aaa;
+/* Inner panel */
+.main-center {
+    margin: 30px auto 0;
+    max-width: 400px;
+    padding: 10px 40px;
+    background: #1E90FF;
+    color: #fff;
+    text-shadow: none;
+    box-shadow: 0 3px 5px rgba(0,0,0,.31);
 }
 
-.address {
-  margin-bottom: 0.5rem;
+/* Input group shadow */
+.input-group {
+    box-shadow: 0 2px 5px rgba(0,0,0,.21);
 }
 
-.facilities span.badge {
-  margin-right:2px;
+/* Make controls comfy even with Bootstrap resets */
+.form-control {
+    height: auto;
+    padding: 8px 12px;
 }
 
-legend {
-  font-family: 'Lobster', cursive;
+/* Icons color (Bootstrap 4: .input-group-text; Bootstrap 3: .input-group-addon) */
+.input-group-text i,
+.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
 }
+
+/* Buttons */
+.login-button {
+    margin-top: 5px;
+}
+
+/* If you keep using id="button", keep Bootstrap look instead of gray gradient */
+#button {
+    margin-top: 28px;
+    background-color:coral;
+}
+
+/* Optional: tighten register/login footer */
+.login-register {
+    font-size: 11px;
+    text-align: center;
+}
+a{
+    color:aliceblue;
+    font-size:15px;
+}
+
+/*Home Page*/
+
+/* Container */
+.race-page {
+    max-width: 1120px;
+}
+
+    /* Section header */
+    .race-page h1 {
+        line-height: 1.2;
+    }
+
+/* Make each horse block feel grouped even if not in cards yet */
+.market-table {
+    margin-bottom: 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    .market-table thead th {
+        font-size: .9rem;
+        font-weight: 600;
+        color: #495057;
+        border-bottom: 1px solid #e9ecef !important;
+    }
+
+    /* Tighter rows + right-align prices */
+    .market-table th, .market-table td {
+        padding: .4rem .6rem !important;
+    }
+
+        .market-table td:not(:first-child) {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+    /* Soft row separators (body only) */
+    .market-table tbody tr + tr td {
+        border-top: 1px dashed #eef2f5;
+    }
+
+    /* “Market” column subtle */
+    .market-table td:first-child, .market-table th:first-child {
+        color: #6c757d;
+        text-align: left;
+    }
+
+/* Best badges */
+.race-badge {
+    font-size: .85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: .25rem .5rem;
+}
+
+/* Space between horses */
+.race-page .horse-block + .horse-block {
+    margin-top: 1.25rem;
+}
+/* Card look */
+.race-card {
+    border: 1px solid #eef2f5;
+    border-radius: 12px;
+}
+
+    .race-card .card-header {
+        font-weight: 700;
+        background: #f8fafc;
+        border-bottom-color: #eef2f5;
+    }
+
+
+
+
