@@ -1,75 +1,38 @@
 extends layout
 
 block content
-  -
-    // --- HARD-CODED RACE + PRICES (DECIMAL) + BEST CHOICES ---
-    const race = { course:'Listowel', offTime:'14:30', distance:'2m 4f' };
-    const bookies = ['Ladbrokes','Paddy Power','BoyleSports'];
-    const horses = [
-      {
-        no:1, name:'Swift Arrow',
-        back:{ 'Ladbrokes':4.50, 'Paddy Power':4.20, 'BoyleSports':3.90, best:{ bookie:'Ladbrokes',   price:4.50 } },
-        lay: { 'Ladbrokes':4.00, 'Paddy Power':3.75, 'BoyleSports':4.10, best:{ bookie:'Paddy Power', price:3.75 } },
-        ew:  { 'Ladbrokes':4.50, 'Paddy Power':4.40, 'BoyleSports':4.30, best:{ bookie:'Ladbrokes',   price:4.50 } }
-      },
-      {
-        no:2, name:'Night Runner',
-        back:{ 'Ladbrokes':5.20, 'Paddy Power':5.50, 'BoyleSports':5.10, best:{ bookie:'Paddy Power', price:5.50 } },
-        lay: { 'Ladbrokes':4.60, 'Paddy Power':4.20, 'BoyleSports':4.30, best:{ bookie:'Paddy Power', price:4.20 } },
-        ew:  { 'Ladbrokes':5.20, 'Paddy Power':5.50, 'BoyleSports':5.20, best:{ bookie:'Paddy Power', price:5.50 } }
-      },
-      {
-        no:3, name:'Green Velvet',
-        back:{ 'Ladbrokes':5.80, 'Paddy Power':5.80, 'BoyleSports':6.00, best:{ bookie:'BoyleSports', price:6.00 } },
-        lay: { 'Ladbrokes':5.50, 'Paddy Power':5.00, 'BoyleSports':5.40, best:{ bookie:'Paddy Power', price:5.00 } },
-        ew:  { 'Ladbrokes':5.80, 'Paddy Power':5.80, 'BoyleSports':6.00, best:{ bookie:'BoyleSports', price:6.00 } }
-      }
-    ];
+  .container
+    .row
+      .span5
+        h1= pageHeader.title
+        h3 #{pageHeader.time} - #{pageHeader.distance} - #{pageHeader.type}
+        if sidebar
+          p= sidebar
 
-  .container.race-page.py-4
-    .d-flex.flex-wrap.justify-content-between.align-items-baseline.mb-3
-      h1.h4.mb-0 #{race.course} — #{race.offTime}
-      span.badge.bg-dark Distance: #{race.distance}
-
-    .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-3
-      each h in horses
-        .col
-          .card.h-100.shadow-sm.race-card
-            .card-header.d-flex.justify-content-between.align-items-center
-              strong #{h.no} — #{h.name}
-              span.badge.bg-secondary Horse ##{h.no}
-            .card-body
-              table.table.table-sm.align-middle.mb-0.market-table
-                thead.table-light
-                  tr
-                    th Market
-                    each b in bookies
-                      th #{b}
-                    th.text-end Best
-                tbody
-                  - const backBest = h.back.best.bookie
-                  tr
-                    td.fw-semibold Back
-                    each b in bookies
-                      - const vBack = h.back[b]
-                      td(class=b===backBest ? 'table-success fw-semibold' : '')= vBack.toFixed(2)
-                    td.text-end
-                      span.badge.bg-success.race-badge #{h.back.best.bookie} #{h.back.best.price.toFixed(2)}
-
-                  - const layBest = h.lay.best.bookie
-                  tr
-                    td.fw-semibold Lay
-                    each b in bookies
-                      - const vLay = h.lay[b]
-                      td(class=b===layBest ? 'table-warning fw-semibold' : '')= vLay.toFixed(2)
-                    td.text-end
-                      span.badge.bg-warning.text-dark.race-badge #{h.lay.best.bookie} #{h.lay.best.price.toFixed(2)}
-
-                  - const ewBest = h.ew.best.bookie
-                  tr
-                    td.fw-semibold Each-Way
-                    each b in bookies
-                      - const vEw = h.ew[b]
-                      td(class=b===ewBest ? 'table-primary fw-semibold' : '')= vEw.toFixed(2)
-                    td.text-end
-                      span.badge.bg-primary.race-badge #{h.ew.best.bookie} #{h.ew.best.price.toFixed(2)}
+    each location in locations
+      .row
+        .span5
+          h3= location.horse
+          table.table.table-striped.table-condensed
+            thead
+              tr
+                th Market
+                th= location.bookmakers[0].boyle
+                th= location.bookmakers[1].paddy
+                th= location.bookmakers[2].bet365
+                th Best
+            tbody
+              tr
+                td= location.back
+                td= location.bookmakers[0].odds.back
+                td= location.bookmakers[1].odds.back
+                td= location.bookmakers[2].odds.back
+                td
+                  span.label.label-success= location.best.back
+              tr
+                td= location.eachWay
+                td= location.bookmakers[0].odds.eachWay
+                td= location.bookmakers[1].odds.eachWay
+                td= location.bookmakers[2].odds.eachWay
+                td
+                  span.label.label-success= location.best.eachWay

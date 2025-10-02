@@ -21,6 +21,18 @@
     text-decoration: none;
     font-size:45px;
 }
+.right-actions { 
+    margin-left:auto;
+ }
+.logout-link, .login-link { 
+    color:#fff; text-decoration:none; 
+    padding:6px 12px; 
+    border:1px solid rgba(255,255,255,.6); 
+    border-radius:4px; 
+}
+.logout-link:hover, .login-link:hover {
+     background:rgba(255,255,255,.12);
+     }
 
 .topbar .brand {
     font-weight: 700;
@@ -192,7 +204,7 @@ a{
         border-top: 1px dashed #eef2f5;
     }
 
-    /* “Market” column subtle */
+    /* ï¿½Marketï¿½ column subtle */
     .market-table td:first-child, .market-table th:first-child {
         color: #6c757d;
         text-align: left;

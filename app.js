@@ -7,6 +7,19 @@ let logger = require('morgan');
 let indexRouter = require('./app_server/routes/index');
 
 let app = express();
+const session = require('express-session');
+
+app.use(session({
+  secret: 'change-me',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// expose user to templates if you set req.session.user later
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));

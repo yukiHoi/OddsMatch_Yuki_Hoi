@@ -8,22 +8,27 @@ block content
     if success
       .alert.alert-success(role="alert") #{success}
 
+    if error 
+      p(style="color:red") #{error}
+    if success
+      p(style="color:green") #{success}
+
     form(method="post", action="/register")
       .form-group
-        label.cols-sm-2.control-label(for='Fname') First Name
+        label.cols-sm-2.control-label(for='firstName') First Name
         .cols-sm-10
           .input-group
             span.input-group-addon
               i.fa.fa-user.fa(aria-hidden='true')
-            input#Fname.form-control(type='text', name='Fname', placeholder='Enter your First Name', required)
+            input#Fname.form-control(type='text', name='firstName', placeholder='Enter your First Name', required)
 
       .form-group
-        label.cols-sm-2.control-label(for='Lname') Last Name
+        label.cols-sm-2.control-label(for='lastName') Last Name
         .cols-sm-10
           .input-group
             span.input-group-addon
               i.fa.fa-users.fa(aria-hidden='true')
-            input#Lname.form-control(type='text', name='Lname', placeholder='Enter your Last Name', required)
+            input#Lname.form-control(type='text', name='lastName', placeholder='Enter your Last Name', required)
 
       .form-group
         label.cols-sm-2.control-label(for='email') Your Email

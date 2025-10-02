@@ -2,15 +2,19 @@ const express = require('express');
 const router = express.Router();
 
 const ctrlLocations = require('../controllers/locations');
-const ctrlAuth      = require('../controllers/auth');
+const ctrlOthers = require('../controllers/others');
 
 // Home (uses locations.homelist)
 router.get('/', ctrlLocations.homelist);
 
-// Auth
-router.get('/login',    ctrlAuth.login);
-router.post('/login',   ctrlAuth.doLogin);
-router.get('/register', ctrlAuth.register);
-router.post('/register',ctrlAuth.doRegister);
+// Location
+router.get('/login',    ctrlOthers.login);
+router.post('/login',   ctrlOthers.doLogin);
+router.get('/register', ctrlOthers.register);
+router.post('/register',ctrlOthers.doRegister);
+
+router.get('/logout',   ctrlOthers.logout);
+
+router.get('/about',    ctrlOthers.about);
 
 module.exports = router;
