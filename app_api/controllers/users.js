@@ -11,18 +11,24 @@ let userCreate = function(req, res) {
       }
 };
 
-let userList = function(req, res) {
-  User.find()
-    .then(users => res.json(users))
+let getUserByEmail = function(req, res) {
+  let email = req.params.email;
+  User.findOne({ email: email })
+    .then(user => {
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+      res.json(user);
+    })
     .catch(err => {
       console.error(err);
       res.status(500).send('Internal server error');
     });
 };
 
-let userDetails = function(req, res) {
-  let userId = req.params.userid;
-  User.findById(userId)
+let getUserByFirstName = function(req, res) {
+  let firstName = req.params.userFirstName;
+  User.findOne({ firstName: firstName })
     .then(user => {
       if (!user) {
         return res.status(404).send('User not found');
@@ -37,6 +43,7 @@ let userDetails = function(req, res) {
 
 module.exports = {
   userCreate,
-  userList,
+  getUserByEmail,
+  getUserByFirstName,
   userDetails
 };
