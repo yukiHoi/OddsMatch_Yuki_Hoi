@@ -10,11 +10,11 @@ router.get('/', (req, res) => {
 
 // Races API routes
 router.get('/races', racesController.raceList);
-router.get('/races/:raceid', racesController.raceDetails);
+router.get('/races/:raceId', racesController.raceDetails);
 
 // Users API routes
 router.get('/users', usersController.userList);
-router.get('/users/:userid', usersController.userDetails);
+router.get('/users/:userId', usersController.userDetails);
 router.post('/users', usersController.userCreate);
 
 module.exports = router;
