@@ -14,7 +14,8 @@ router.get('/races/:raceId', racesController.raceDetails);
 
 // Users API routes
 router.get('/users', usersController.userList);
-router.get('/users/:userId', usersController.userDetails);
+router.get('/users/:email', usersController.getUserByEmail);
+router.put('/users/:userFirstName', usersController.getUserByFirstName);
 router.post('/users', usersController.userCreate);
 
 module.exports = router;
