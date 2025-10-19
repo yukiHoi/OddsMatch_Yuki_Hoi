@@ -135,7 +135,6 @@ input::-webkit-input-placeholder {
     padding: 8px 12px;
 }
 
-/* Icons color (Bootstrap 4: .input-group-text; Bootstrap 3: .input-group-addon) */
 .input-group-text i,
 .input-group-addon i {
     color: #009edf;
@@ -147,13 +146,11 @@ input::-webkit-input-placeholder {
     margin-top: 5px;
 }
 
-/* If you keep using id="button", keep Bootstrap look instead of gray gradient */
 #button {
     margin-top: 28px;
     background-color:coral;
 }
 
-/* Optional: tighten register/login footer */
 .login-register {
     font-size: 11px;
     text-align: center;
@@ -233,6 +230,7 @@ a{
         background: #f8fafc;
         border-bottom-color: #eef2f5;
     }
+
 
 
 
