@@ -1,17 +1,14 @@
-// user_accounts.mongodb.js
+// db_seeds/user_accounts.mongodb.js
+use('odds_comparison');
+ // or your DB name exactly as in the URI
 
-use('user_accounts');
-
-// insert one user
 db.getCollection('users').insertOne({
   firstName: 'John',
   lastName: 'Doe',
   email: 'john.doe@example.com',
-  phone: '+353871234567',
+  phoneNo: '+353871234567',
   address: '123 Main Street, Limerick, Ireland',
-  // Replace with a real bcrypt hash; never store plain text
-  passwordHash: '12345678'
+  passwordHash: '$2b$10$z2o6i8sVq8oXxjN7QO3z7O7z8b0m9QyF6vQp8nM0pHk9yJfCm9V4a'
 });
 
-// quick sanity check (shows in the OUTPUT panel)
 db.getCollection('users').find({ email: 'john.doe@example.com' });

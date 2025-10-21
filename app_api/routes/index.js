@@ -1,20 +1,21 @@
-let express = require('express');
-let router = express.Router();
+// app_api/routes/index.js
+const express = require('express');
+const router = express.Router();
 
-let racesController = require('../controllers/races');
-let usersController = require('../controllers/users');
+const races = require('../controllers/races');
+const users = require('../controllers/users');
 
 router.get('/', (req, res) => {
   res.status(200).json({ status: 'ok', service: 'OddsMatch API is running' });
 });
 
-// Races API routes
-router.get('/races', racesController.raceList);
-router.get('/races/:raceId', racesController.raceDetails);
+// Races
+router.get('/races', races.raceList);
+router.get('/races/:raceId', races.raceDetails);
 
-// Users API routes
-router.get('/users', usersController.userList);
-router.get('/users/:userId', usersController.userDetails);
-router.post('/users', usersController.userCreate);
+// Users
+router.post('/users', users.userCreate);
+router.get('/users/by-email/:email', users.getUserByEmail);
+router.get('/users/by-firstname/:firstName', users.getUserByFirstName);
 
 module.exports = router;
