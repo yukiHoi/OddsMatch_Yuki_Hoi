@@ -15,7 +15,6 @@ router.get('/races/:raceId', races.raceDetails);
 
 // Users
 router.post('/users', users.userCreate);
-router.get('/users/by-email/:email', users.getUserByEmail);
-router.get('/users/by-firstname/:firstName', users.getUserByFirstName);
+router.post('/users/login', users.userLogIn);
 
 module.exports = router;
